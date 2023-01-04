@@ -34,7 +34,9 @@ export class Ship extends Component {
                 if (this.healthCurrentShip <= 10) {
                     this.node.destroy();
                 }
-                bullet.getComponent(BulletPlayer).colliderCallback(bullet);
+
+                bullet.getComponent(BulletPlayer).bulletPlayerPool.put(bullet);
+                
             }
         }
     }

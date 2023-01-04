@@ -14,6 +14,7 @@ export class Configs {
     public static PATH_MAP = 'prefab/map';
     public static PATH_LEVEL = "level/level";
     public static PATH_BOSS = "prefab/EnemyBoss";
+    public static PATH_WINUI = "ui/uiWin";
 }
 
 

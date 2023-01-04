@@ -31,7 +31,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 11
+      "__id__": 9
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -119,12 +119,6 @@
     "listMapType": [
       {
         "__id__": 8
-      },
-      {
-        "__id__": 9
-      },
-      {
-        "__id__": 10
       }
     ],
     "_id": ""
@@ -135,74 +129,16 @@
   },
   {
     "__type__": "MapType",
+    "possitionBoss": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 324,
+      "z": 0
+    },
     "positionMap": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 0
-    },
-    "listPositionEnemy": [
-      {
-        "__type__": "cc.Vec3",
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      {
-        "__type__": "cc.Vec3",
-        "x": 100,
-        "y": 300,
-        "z": 0
-      },
-      {
-        "__type__": "cc.Vec3",
-        "x": -200,
-        "y": 300,
-        "z": 0
-      }
-    ]
-  },
-  {
-    "__type__": "MapType",
-    "positionMap": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 1280,
-      "z": 0
-    },
-    "listPositionEnemy": [
-      {
-        "__type__": "cc.Vec3",
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      {
-        "__type__": "cc.Vec3",
-        "x": 100,
-        "y": 300,
-        "z": 0
-      },
-      {
-        "__type__": "cc.Vec3",
-        "x": -200,
-        "y": 300,
-        "z": 0
-      }
-    ]
-  },
-  {
-    "__type__": "MapType",
-    "possitionBoss": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 300,
-      "z": 0
-    },
-    "positionMap": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 2560,
       "z": 0
     },
     "listPositionEnemy": [

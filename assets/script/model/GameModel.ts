@@ -1,6 +1,8 @@
 import { _decorator, Component, instantiate, Node, Prefab, Label, NodePool, Vec3 } from 'cc';
 import { LevelController } from '../controller/LevelController';
 import { BulletEnemy } from '../object/BulletEnemy';
+import { BulletPlayer } from '../object/BulletPlayer';
+import { PlayerPlane } from '../object/PlayerPlane';
 import { Configs } from '../utils/Configs';
 import { PreData } from '../utils/PreData';
 import { ResourceUtils } from '../utils/ResourceUtils';
@@ -21,44 +23,38 @@ export class GameModel extends Component {
     public playerPlane: Node
     public levelCurrent: Node
     public bulletEnemyPool = new NodePool();
+    public bulletPlayer = new NodePool();
 
     onLoad(){
-        this.bulletEnemyPool = new NodePool();
+        this.createBullet();
+        this.createBulletEnemy();
+    }
+    private createBulletEnemy(){
         ResourceUtils.loadPrefab("prefab/PlayerBullet3", (prefab: Prefab) => {
-           
             for (let i = 0; i < 50; i++) {
                 let bulletPre = instantiate(prefab);
                 this.bulletEnemyPool.put(bulletPre)
-                bulletPre.getComponent(BulletEnemy).setUp((bullet: BulletEnemy) => {
-                    this.addNewBullet(bullet);
-                }, (bullet) => {
-                    this.addBullet(bullet);
-                })
+                bulletPre.getComponent(BulletEnemy).setUp(this.bulletEnemyPool);
                 
             }
-
+        })
+    }
+    private createBullet() {
+        ResourceUtils.loadPrefab("prefab/PlayerBullet1", (prefab: Prefab) => {
+            this.bulletPlayer = new NodePool();
+            for (let i = 0; i < 50; i++) {
+                let bulletPre = instantiate(prefab);
+                this.bulletPlayer.put(bulletPre);
+                bulletPre.getComponent(BulletPlayer).setUp(this.bulletPlayer);
+                
+            }
         })
     }
 
-    private addBullet(bullet) {
-        this.bulletEnemyPool.put(bullet);
-    }
-
-    private addNewBullet(bullet) {
-        let bulletPossi = bullet.node.getWorldPosition();
-
-        if (bullet.node.getWorldPosition().y < PreData.instant.cameraPosisionY - 200) {
-            this.bulletEnemyPool.put(bullet.node);
-        }
-        else {
-            bullet.node.translate(new Vec3(0, -1, 0));
-        }
-    }
-
-    public loadLevelMap(finishcallback){
+    public loadLevelMap(finishcallback, winUI){
         ResourceUtils.loadPrefab(Configs.PATH_LEVEL + PreData.instant.level, (prefab : Prefab)=>{
             this.levelCurrent = instantiate(prefab);
-            this.levelCurrent.getComponent(LevelController).setUp(this.bulletEnemyPool);
+            this.levelCurrent.getComponent(LevelController).setUp(this.bulletEnemyPool, winUI);
             this.gamePlayNode.addChild(this.levelCurrent);
             finishcallback();
         })
