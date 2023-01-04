@@ -3,7 +3,7 @@ import { bulletInf } from '../interface/bulletInf';
 const { ccclass, property } = _decorator;
 
 @ccclass('BulletEnemy')
-export class BulletEnemy extends Component implements bulletInf{
+export class BulletEnemy extends Component {
     callback: CallableFunction;
     colliderCallback: CallableFunction;
     damage: number = 10;
@@ -17,12 +17,9 @@ export class BulletEnemy extends Component implements bulletInf{
         return this.damage;
     }
 
-    
-    setUp(callback, colliderCallback) {
-        
-    }
-
     update(deltaTime: number) {
+        if(!this.node) return;
+        if(this.callback)
         this.callback(this);
     }
 }

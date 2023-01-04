@@ -6,6 +6,7 @@ export class PreData extends Component {
     public static instant: PreData ;
     public typePlayerPlane: number;
     public cameraPosisionY = 0;
+    public level: number = 1;
     start(){
         if(PreData.instant == null){
             PreData.instant = this;

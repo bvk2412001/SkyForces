@@ -5,6 +5,7 @@ import { PlayerPlane } from '../object/PlayerPlane';
 import { PreData } from '../utils/PreData';
 import { Configs } from '../utils/Configs';
 import { ResourceUtils } from '../utils/ResourceUtils';
+import { BulletEnemy } from '../object/BulletEnemy';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameController')
@@ -17,6 +18,8 @@ export class GameController extends Component {
 
     private gamemodel: GameModel;
     private planePlayer;
+    private bulletEnemyPool = new NodePool();
+    private bulletBoll;
 
     start() {
         this.gamemodel = this.gameModel.getComponent(GameModel);
@@ -27,8 +30,6 @@ export class GameController extends Component {
         input.on(Input.EventType.TOUCH_MOVE, this.TouchMovePlane, this);
     }
 
-
-    
 
     private TouchMovePlane(event: EventTouch){
         let location = event.getUILocation();
@@ -56,6 +57,7 @@ export class GameController extends Component {
     }
     
     update(deltaTime: number){
+
     }
 }
 

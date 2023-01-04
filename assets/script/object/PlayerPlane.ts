@@ -13,7 +13,7 @@ export class PlayerPlane extends Component {
 
     private typePlane: number;
     private callback;
-    private bulletBoll
+    private bulletBoll;
     onLoad() {
         this.node.active = false;
     }
@@ -32,14 +32,14 @@ export class PlayerPlane extends Component {
     private createBullet() {
         ResourceUtils.loadPrefab("prefab/PlayerBullet1", (prefab: Prefab) => {
             this.bulletBoll = new NodePool();
-            for (let i = 0; i < 20; i++) {
-                let bullet = instantiate(prefab);
-                bullet.getComponent(BulletPlayer).setUp((bullet: BulletPlayer) => {
+            for (let i = 0; i < 100; i++) {
+                let bulletPre = instantiate(prefab);
+                bulletPre.getComponent(BulletPlayer).setUp((bullet: BulletPlayer) => {
                     this.addNewBullet(bullet);
                 }, (bullet) => {
                     this.addBullet(bullet);
                 })
-                this.bulletBoll.put(bullet);
+                this.bulletBoll.put(bulletPre);
             }
         })
     }
@@ -49,14 +49,16 @@ export class PlayerPlane extends Component {
     }
 
     private addNewBullet(bullet) {
-        if (bullet.node.position.y > (PreData.instant.cameraPosisionY + Configs.HALF_SCENE_HEIGHT))
+        let bulletPossi = bullet.node.getWorldPosition();
+        if (bulletPossi.y > PreData.instant.cameraPosisionY + 1200)
             this.bulletBoll.put(bullet.node);
         else {
-            bullet.node.translate(new Vec3(0, 2.5, 0));
+            bullet.node.translate(new Vec3(0, 3.5, 0));
         }
     }
     private fire() {
         let bullet = this.bulletBoll.get();
+        
         this.node.parent.addChild(bullet);
         bullet.setPosition(this.node.getPosition())
     }

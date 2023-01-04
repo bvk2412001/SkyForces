@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "level1",
+    "_name": "level2",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "level1",
+    "_name": "level2",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -193,12 +193,6 @@
   },
   {
     "__type__": "MapType",
-    "possitionBoss": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 300,
-      "z": 0
-    },
     "positionMap": {
       "__type__": "cc.Vec3",
       "x": 0,

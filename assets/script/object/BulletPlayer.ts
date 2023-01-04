@@ -4,7 +4,7 @@ import { Configs } from '../utils/Configs';
 const { ccclass, property } = _decorator;
 
 @ccclass('BulletPlayer')
-export class BulletPlayer extends Component implements bulletInf{
+export class BulletPlayer extends Component{
     callback: CallableFunction;
     colliderCallback: CallableFunction;
     damage: number = 10;
@@ -20,6 +20,7 @@ export class BulletPlayer extends Component implements bulletInf{
 
 
     update(deltaTime: number) {
+        if(!this) return;
         this.callback(this);
     }
 }
