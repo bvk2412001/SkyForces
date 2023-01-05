@@ -36,7 +36,8 @@ export class Ship extends Component {
                     PreData.instant.score += 10;
 
                     this.setScore();
-                    console.log(this.setScore());
+                    this.setScore;
+                    console.log(this.setScore);
                     this.node.destroy();
                 }
 
@@ -48,8 +49,6 @@ export class Ship extends Component {
 
     setUp(bulletEnemyBoll, setScore: CallableFunction) {
         this.setScore = setScore;
-        console.log(this.setScore)
-        console.log(this.setScore());
         this.bulletBoll = bulletEnemyBoll;
         
     }

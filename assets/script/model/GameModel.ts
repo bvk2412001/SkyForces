@@ -61,7 +61,7 @@ export class GameModel extends Component {
         ResourceUtils.loadPrefab(Configs.PATH_LEVEL + PreData.instant.level, (prefab : Prefab)=>{
             this.levelCurrent = instantiate(prefab);
             this.levelCurrent.getComponent(LevelController).setUp(this.bulletEnemyPool, winUI, ()=>{
-                this.setLevel();
+               this.setScore();
             })
             this.gamePlayNode.addChild(this.levelCurrent);
             finishcallback();

@@ -33,7 +33,7 @@ export class BossController extends Component {
                 this.progessBar.progress = this.healthCurrentShip / this.healthFullShip;
                 if (this.healthCurrentShip <= 0) {
                     PreData.instant.score += 30;
-                    this.setScore();
+                    this.setScore;
                     this.node.destroy();
                     this.winUI();
                 }
