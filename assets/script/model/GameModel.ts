@@ -29,6 +29,12 @@ export class GameModel extends Component {
         this.createBullet();
         this.createBulletEnemy();
     }
+
+    start(){
+        this.setLevel();
+        this.setScore();
+        
+    }
     private createBulletEnemy(){
         ResourceUtils.loadPrefab("prefab/PlayerBullet3", (prefab: Prefab) => {
             for (let i = 0; i < 50; i++) {
@@ -54,7 +60,9 @@ export class GameModel extends Component {
     public loadLevelMap(finishcallback, winUI){
         ResourceUtils.loadPrefab(Configs.PATH_LEVEL + PreData.instant.level, (prefab : Prefab)=>{
             this.levelCurrent = instantiate(prefab);
-            this.levelCurrent.getComponent(LevelController).setUp(this.bulletEnemyPool, winUI);
+            this.levelCurrent.getComponent(LevelController).setUp(this.bulletEnemyPool, winUI, ()=>{
+                this.setLevel();
+            })
             this.gamePlayNode.addChild(this.levelCurrent);
             finishcallback();
         })
@@ -67,6 +75,16 @@ export class GameModel extends Component {
             Utils.Log(this.playerPlane);
             callback();
         })
+    }
+
+    public setLevel(){
+        this.lblLevel.string = "Level : " + PreData.instant.level;
+        
+    }
+
+    public setScore(){
+        console.log("khoa")
+        this.lblScore.string = "Score : " + PreData.instant.score;
     }
 }
 

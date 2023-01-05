@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Collider2D, Contact2DType, IPhysics2DContact, ProgressBar } from 'cc';
 import { Configs } from '../utils/Configs';
+import { PreData } from '../utils/PreData';
 import { BulletPlayer } from './BulletPlayer';
 const { ccclass, property } = _decorator;
 
@@ -11,6 +12,7 @@ export class BossController extends Component {
     private healthCurrentShip: number = 30;
     private healthFullShip: number = 30;
     private winUI;
+    private setScore;
 
     start() {
         let collect = this.node.getComponent(Collider2D);
@@ -18,8 +20,9 @@ export class BossController extends Component {
             collect.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
         }
     }
-    setUp(winUI){
+    setUp(winUI, setScore : CallableFunction){
         this.winUI = winUI;
+        this.setScore = setScore
     }
 
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
@@ -29,6 +32,8 @@ export class BossController extends Component {
                 this.healthCurrentShip -= 10;
                 this.progessBar.progress = this.healthCurrentShip / this.healthFullShip;
                 if (this.healthCurrentShip <= 0) {
+                    PreData.instant.score += 30;
+                    this.setScore();
                     this.node.destroy();
                     this.winUI();
                 }

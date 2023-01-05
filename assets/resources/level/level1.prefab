@@ -31,7 +31,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 9
+      "__id__": 11
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -119,20 +119,26 @@
     "listMapType": [
       {
         "__id__": 8
+      },
+      {
+        "__id__": 9
+      },
+      {
+        "__id__": 10
       }
     ],
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "98xub/byFDj7OOK4mkLVDM"
+    "fileId": "3bi8J+fl9L35CXLrQukrKd"
   },
   {
     "__type__": "MapType",
     "possitionBoss": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 324,
+      "y": 0,
       "z": 0
     },
     "positionMap": {
@@ -144,14 +150,8 @@
     "listPositionEnemy": [
       {
         "__type__": "cc.Vec3",
-        "x": 0,
-        "y": 0,
-        "z": 0
-      },
-      {
-        "__type__": "cc.Vec3",
-        "x": 100,
-        "y": 300,
+        "x": 200,
+        "y": 200,
         "z": 0
       },
       {
@@ -159,8 +159,65 @@
         "x": -200,
         "y": 300,
         "z": 0
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": 300,
+        "y": 600,
+        "z": 0
       }
     ]
+  },
+  {
+    "__type__": "MapType",
+    "possitionBoss": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "positionMap": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 1280,
+      "z": 0
+    },
+    "listPositionEnemy": [
+      {
+        "__type__": "cc.Vec3",
+        "x": -100,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": 200,
+        "y": 200,
+        "z": 0
+      },
+      {
+        "__type__": "cc.Vec3",
+        "x": -300,
+        "y": 400,
+        "z": 0
+      }
+    ]
+  },
+  {
+    "__type__": "MapType",
+    "possitionBoss": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 400,
+      "z": 0
+    },
+    "positionMap": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 2559.9,
+      "z": 0
+    },
+    "listPositionEnemy": []
   },
   {
     "__type__": "cc.PrefabInfo",

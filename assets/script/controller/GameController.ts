@@ -21,10 +21,11 @@ export class GameController extends Component {
     private planePlayer;
     private isGameWin: boolean = false
 
-
-    start() {
+    onLoad() {
         this.gamemodel = this.gameModel.getComponent(GameModel);
         this.loadMap();
+    }
+    start() {
         input.on(Input.EventType.TOUCH_MOVE, this.TouchMovePlane, this);
     }
 
@@ -54,6 +55,7 @@ export class GameController extends Component {
         this.isGameWin = true;
         ResourceUtils.loadPrefab(Configs.PATH_WINUI, (prefab: Prefab) => {
             let winUI = instantiate(prefab);
+            winUI.getComponent(WinController).setUp();
             this.gameCamera.node.addChild(winUI);
         })
     }
@@ -64,10 +66,12 @@ export class GameController extends Component {
 
     update(deltaTime: number) {
         if (this.isGameWin) return;
-        this.timeCount += deltaTime;
-        if (this.timeCount >= 0.4) {
-            this.planePlayer.getComponent(PlayerPlane).fire();
-            this.timeCount = 0;
+        if (this.planePlayer) {
+            this.timeCount += deltaTime;
+            if (this.timeCount >= 0.4) {
+                this.planePlayer.getComponent(PlayerPlane).fire();
+                this.timeCount = 0;
+            }
         }
 
         if (PreData.instant.cameraPosisionY < 2560) {

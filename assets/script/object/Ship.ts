@@ -15,6 +15,7 @@ export class Ship extends Component {
     private healthCurrentShip: number = 10;
     private healthFullShip: number = 10;
     private bulletBoll;
+    private setScore;
 
     start() {
         let collect = this.node.getComponent(Collider2D);
@@ -32,6 +33,10 @@ export class Ship extends Component {
                 this.healthCurrentShip -= bullet.getComponent(BulletPlayer).getDamage();
                 this.progessBar.progress = this.healthCurrentShip / this.healthFullShip;
                 if (this.healthCurrentShip <= 10) {
+                    PreData.instant.score += 10;
+
+                    this.setScore();
+                    console.log(this.setScore());
                     this.node.destroy();
                 }
 
@@ -41,8 +46,12 @@ export class Ship extends Component {
         }
     }
 
-    setUp(bulletEnemyBoll) {
+    setUp(bulletEnemyBoll, setScore: CallableFunction) {
+        this.setScore = setScore;
+        console.log(this.setScore)
+        console.log(this.setScore());
         this.bulletBoll = bulletEnemyBoll;
+        
     }
 
     private fire() {

@@ -11,16 +11,20 @@ export class LevelController extends Component {
     listMapType: MapType[] = [];
 
     private mapPre: Prefab;
-    setUp(bulletBoll, winUI) {
+
+    setUp(bulletBoll, winUI, setScore: CallableFunction) {
         ResourceUtils.loadPrefab(Configs.PATH_MAP, (prefab: Prefab) => {
-            console.log(this.listMapType)
             this.mapPre = prefab;
+            let index = 1;
             this.listMapType.forEach(element => {
                 let map = instantiate(this.mapPre);
-                map.getComponent(MapController).setUp(element.possitionBoss,element.listPositionEnemy, bulletBoll, winUI);
+                if(index != this.listMapType.length){
+                    element.possitionBoss = undefined;
+                }
+                map.getComponent(MapController).setUp(element.possitionBoss,element.listPositionEnemy, bulletBoll, winUI, setScore);
                 this.node.addChild(map);
                 map.setPosition(element.positionMap);
-
+                index++;
             })
         })
     }

@@ -30,8 +30,8 @@ export class PlayerPlane extends Component {
 
     fire() {
         let bullet = this.bulletBoll.get();
+        
         this.node.parent.addChild(bullet);
-        console.log(bullet)
         bullet.setPosition(this.node.getPosition())
     }
 

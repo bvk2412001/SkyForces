@@ -15,6 +15,7 @@ export class Configs {
     public static PATH_LEVEL = "level/level";
     public static PATH_BOSS = "prefab/EnemyBoss";
     public static PATH_WINUI = "ui/uiWin";
+    public static KEY_STORAGE_SCORE = "score";
 }
 
 

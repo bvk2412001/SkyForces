@@ -19,13 +19,13 @@ export class MapController extends Component {
 
     }
 
-    setUp(positionMap, listPositionEnemy, bulletEnemyBoll, winUI) {
+    setUp(positionMap, listPositionEnemy, bulletEnemyBoll, winUI, setScore: CallableFunction) {
         ResourceUtils.loadPrefab(Configs.PATH_ENEMY, (prefab: Prefab) => {
             this.enemy = prefab;
-            if (positionMap != undefined) {
+            if (positionMap != undefined ) {
                 ResourceUtils.loadPrefab(Configs.PATH_BOSS, (prefab: Prefab) => {
                     let enemyBoss = instantiate(prefab);
-                    enemyBoss.getComponent(BossController).setUp(winUI);
+                    enemyBoss.getComponent(BossController).setUp(winUI, setScore);
                     this.node.addChild(enemyBoss);
                     enemyBoss.setPosition(positionMap);
                  
@@ -33,7 +33,7 @@ export class MapController extends Component {
             }
             listPositionEnemy.forEach(element => {
                 let enemyNew = instantiate(this.enemy);
-                enemyNew.getComponent(Ship).setUp(bulletEnemyBoll);
+                enemyNew.getComponent(Ship).setUp(bulletEnemyBoll, setScore);
                 this.node.addChild(enemyNew);
                 enemyNew.setPosition(element);
             });
